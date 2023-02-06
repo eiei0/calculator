@@ -16,8 +16,12 @@ class Calculator
   }.freeze
 
   def initialize(first_int, operation, second_int)
-    @first_int = first_int
-    @second_int = second_int
+    @first_int = first_int.to_i
+    @second_int = second_int.to_i
+  rescue NoMethodError => e
+    @first_int = 0
+    @second_int = 0
+  ensure
     @operation = operation
   end
 

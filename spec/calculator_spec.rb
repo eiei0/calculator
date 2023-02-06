@@ -18,5 +18,35 @@ RSpec.describe Calculator do
         expect { calculator.calculate }.to raise_error("'#{operation}' is an invalid operation")
       end
     end
+
+    context 'when either of the operands are invalid' do
+      let(:addition_class) { class_double('Add') }
+
+      before do
+        allow(addition_class).to receive(:calculate)
+        allow(calculator).to receive(:operation_class).and_return(addition_class)
+      end
+
+      context 'and they are strings or integers' do
+        let(:first_int) { 'hi mom' }
+
+        it 'attempts to convert them into integers' do
+          calculator.calculate
+
+          expect(addition_class).to have_received(:calculate).with(0, second_int)
+        end
+      end
+
+      context 'and they are not strings or integers' do
+        let(:first_int) { Struct.new('HiMom') }
+        let(:second_int) { Struct.new('HiDad') }
+
+        it 'converts them into integers' do
+          calculator.calculate
+
+          expect(addition_class).to have_received(:calculate).with(0, 0)
+        end
+      end
+    end
   end
 end
