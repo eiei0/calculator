@@ -11,6 +11,24 @@ RSpec.describe Calculator do
   let(:operation) { '+' }
 
   describe '#calculate' do
+    described_class::OPS.each do |op, klass|
+      context "when the operation is #{op}" do
+        let(:operation) { op }
+        let(:operation_class) { class_double(klass.to_s) }
+
+        before do
+          allow(operation_class).to receive(:calculate)
+          allow(calculator).to receive(:operation_class).and_return(operation_class)
+        end
+
+        it 'calculates the operands using the expected class' do
+          calculator.calculate
+
+          expect(operation_class).to have_received(:calculate).with(first_int, second_int)
+        end
+      end
+    end
+
     context 'when operation is invalid' do
       let(:operation) { '%' }
 
