@@ -22,7 +22,7 @@ class Calculator
   end
 
   def calculate
-    operation_class
+    operation_class.calculate(first_int, second_int)
   end
 
   private

@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class Multiply
+require_relative './base'
+
+class Multiply < Base
+  def calculate
+  end
 end

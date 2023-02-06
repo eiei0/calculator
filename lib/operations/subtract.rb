@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class Subtract
+require_relative './base'
+
+class Subtract < Base
+  def calculate
+  end
 end

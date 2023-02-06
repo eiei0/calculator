@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class Divide
+require_relative './base'
+
+class Divide < Base
+  def calculate
+  end
 end
