@@ -8,13 +8,19 @@ class Base
   def initialize(first_int, second_int)
     @first_int = first_int
     @second_int = second_int
+    @operator = nil
+
+    post_initialize
   end
 
   def calculate
-    raise "##{__method__} is not implemented in base class"
+    first_int.send(operator.to_sym, second_int)
   end
 
   private
 
-  attr_reader :first_int, :second_int
+  attr_reader :first_int, :second_int, :operator
+
+  def post_initialize
+  end
 end

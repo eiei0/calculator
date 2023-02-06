@@ -4,8 +4,14 @@ require_relative './base'
 
 class Divide < Base
   def calculate
-    first_int / second_int
+    super
   rescue ZeroDivisionError
     'NaN'
+  end
+
+  private
+
+  def post_initialize
+    @operator = '/'
   end
 end
