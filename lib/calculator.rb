@@ -18,7 +18,7 @@ class Calculator
   def initialize(first_int, operation, second_int)
     @first_int = first_int.to_i
     @second_int = second_int.to_i
-  rescue NoMethodError => e
+  rescue NoMethodError => _e
     @first_int = 0
     @second_int = 0
   ensure

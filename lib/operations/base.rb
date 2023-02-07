@@ -21,6 +21,5 @@ class Base
 
   attr_reader :first_int, :second_int, :operator
 
-  def post_initialize
-  end
+  def post_initialize; end
 end

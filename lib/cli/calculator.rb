@@ -13,28 +13,31 @@ module CLI
     desc 'add [LEFT_OPERAND] --to [RIGHT_OPERAND]', 'Adds the two operands together and prints the result'
     method_option :to, required: true, type: :string
     def add(left_operand)
-      calculator = ::Calculator.new(left_operand, "+", options[:to])
+      calculator = ::Calculator.new(left_operand, '+', options[:to])
       puts calculator.calculate
     end
 
-    desc 'subtract [LEFT_OPERAND] --from [RIGHT_OPERAND]', 'Subtracts the left operand from the right operand and prints the result'
+    desc 'subtract [LEFT_OPERAND] --from [RIGHT_OPERAND]',
+         'Subtracts the left operand from the right operand and prints the result'
     method_option :from, required: true, type: :string
     def subtract(left_operand)
-      calculator = ::Calculator.new(left_operand, "-", options[:from])
+      calculator = ::Calculator.new(left_operand, '-', options[:from])
       puts calculator.calculate
     end
 
-    desc 'multiply [LEFT_OPERAND] --by [RIGHT_OPERAND]', 'Multiplies the left operand by the right operand and prints the result'
+    desc 'multiply [LEFT_OPERAND] --by [RIGHT_OPERAND]',
+         'Multiplies the left operand by the right operand and prints the result'
     method_option :by, required: true, type: :string
     def multiply(left_operand)
-      calculator = ::Calculator.new(left_operand, "*", options[:by])
+      calculator = ::Calculator.new(left_operand, '*', options[:by])
       puts calculator.calculate
     end
 
-    desc 'divide [LEFT_OPERAND] --by [RIGHT_OPERAND]', 'Divides the left operand by the right operand and prints the result'
+    desc 'divide [LEFT_OPERAND] --by [RIGHT_OPERAND]',
+         'Divides the left operand by the right operand and prints the result'
     method_option :by, required: true, type: :string
     def divide(left_operand)
-      calculator = ::Calculator.new(left_operand, "/", options[:by])
+      calculator = ::Calculator.new(left_operand, '/', options[:by])
       puts calculator.calculate
     end
   end
